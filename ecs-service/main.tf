@@ -49,7 +49,7 @@ resource "aws_ecs_service" "this" {
   tags                              = var.tags
   health_check_grace_period_seconds = 0
   propagate_tags                    = "TASK_DEFINITION"
-  wait_for_steady_state = true
+  wait_for_steady_state = var.service_wait_for_steady_state
   capacity_provider_strategy {
     capacity_provider = var.service_capacity_provider
     base              = var.service_capacity_provider_base

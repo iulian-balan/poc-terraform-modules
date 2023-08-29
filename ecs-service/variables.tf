@@ -96,3 +96,8 @@ variable "service_capacity_provider_weight" {
 variable "tags" {
   type = map(any)
 }
+
+variable "service_wait_for_steady_state" {
+  type = bool
+  default = false
+}
