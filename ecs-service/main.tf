@@ -47,6 +47,8 @@ resource "aws_ecs_service" "this" {
     assign_public_ip = var.network_configuration.assign_public_ip
   }
   tags                              = var.tags
+  deployment_maximum_percent = 100
+  deployment_minimum_healthy_percent = 0
   health_check_grace_period_seconds = 0
   propagate_tags                    = "TASK_DEFINITION"
   wait_for_steady_state = var.service_wait_for_steady_state
