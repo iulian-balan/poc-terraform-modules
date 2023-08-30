@@ -38,14 +38,6 @@ variable "runtime_platform" {
   }
 }
 
-variable "network_configuration" {
-  type = object({
-    subnets = list(string)
-    security_groups = list(string)
-    assign_public_ip = bool
-  })
-}
-
 variable "task_healthcheck" {
   type    = object({
     command = list(string)
