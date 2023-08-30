@@ -1,7 +1,7 @@
 resource "aws_ecs_task_definition" "this" {
   family       = var.task_family
   skip_destroy = true
-  network_mode = "awsvpc"
+  network_mode = "bridge"
   requires_compatibilities = ["EC2"]
   tags                              = var.tags
 
@@ -40,11 +40,6 @@ resource "aws_ecs_service" "this" {
   scheduling_strategy = "REPLICA"
   deployment_controller {
     type = "ECS"
-  }
-  network_configuration {
-    subnets = var.network_configuration.subnets
-    security_groups = var.network_configuration.security_groups
-    assign_public_ip = var.network_configuration.assign_public_ip
   }
   tags                              = var.tags
   deployment_maximum_percent = 100
